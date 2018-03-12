@@ -6,3 +6,4 @@ USER=ubuntu
 for S in $IP ; do
         ssh -i $KEY $USER@$S "sudo chef-client"
 done
+exit $?
