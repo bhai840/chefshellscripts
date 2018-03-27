@@ -1,0 +1,15 @@
+execute 'prereq' do
+     command  "yum -y install nc tmux rsync git \
+    && yum -y install net-tools libaio m4 ksh psmisc perl \
+    && yum -y install gpfs_driver/base/* \
+    && yum -y update gpfs_driver/update/* \
+                         && yum install kernel-devel-`uname -r` cpp gcc gcc-c++ \
+    &&  /usr/lpp/mmfs/bin/mmbuildgpl \
+                         && cp mmglobfuncs.Linux /usr/lpp/mmfs/bin/;
+chown root:root /usr/lpp/mmfs/bin/mmglobfuncs.Linux;
+chmod 555 /usr/lpp/mmfs/bin/mmglobfuncs.Linux \
+    && mkdir /var/mmfs/etc/RKMcerts
+;chown root:root /var/mmfs/etc/RKMcerts;
+chmod 600 /var/mmfs/etc/RKMcerts"
+
+end
